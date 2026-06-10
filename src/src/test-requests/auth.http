@@ -2,7 +2,24 @@ POST http://localhost:8081/api/auth/register
 Content-Type: application/json
 
 {
+  "email": "not-an-email",
+  "password": "short",
+  "displayName": ""
+}
+### Login with valid credentials
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
   "email": "student@example.com",
-  "password": "StrongPassword123!",
-  "displayName": "Student"
+  "password": "StrongPassword123!"
+}
+
+### Login with wrong password
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "student@example.com",
+  "password": "WrongPassword123!"
 }

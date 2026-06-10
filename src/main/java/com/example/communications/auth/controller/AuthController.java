@@ -1,6 +1,8 @@
 package com.example.communications.auth.controller;
 
 
+import com.example.communications.auth.dto.LoginRequest;
+import com.example.communications.auth.dto.LoginResponse;
 import com.example.communications.auth.dto.RegisterRequest;
 import com.example.communications.auth.dto.UserResponse;
 import com.example.communications.auth.service.AuthService;
@@ -23,4 +25,8 @@ public class AuthController {
    public UserResponse register(@Valid @RequestBody RegisterRequest registerRequest) {
        return authService.register(registerRequest);
    }
+    @PostMapping("/login")
+    public LoginResponse login(@Valid @RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
+    }
 }
