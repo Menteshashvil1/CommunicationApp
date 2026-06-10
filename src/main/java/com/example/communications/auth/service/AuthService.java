@@ -1,8 +1,11 @@
 package com.example.communications.auth.service;
 
+import com.example.communications.auth.dto.LoginRequest;
+import com.example.communications.auth.dto.LoginResponse;
 import com.example.communications.auth.dto.RegisterRequest;
 import com.example.communications.auth.dto.UserResponse;
 import com.example.communications.auth.exception.EmailAlreadyRegisteredException;
+import com.example.communications.auth.exception.InvalidCredentialsException;
 import com.example.communications.user.model.User;
 import com.example.communications.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -39,5 +42,22 @@ public class AuthService {
         User savedUser = userRepository.save(user);
 
         return UserResponse.from(savedUser);
+    }
+
+
+    public LoginResponse login(LoginRequest loginRequest) {
+        String email = loginRequest.email().trim().toLowerCase();
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(InvalidCredentialsException::new);
+
+        boolean passwordMatches =  passwordEncoder.matches(
+                loginRequest.password(),
+                user.getPasswordHash()
+        );
+
+        if (!passwordMatches) {
+            throw new InvalidCredentialsException();
+        }
+        return new LoginResponse(UserResponse.from(user));
     }
 }
