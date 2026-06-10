@@ -116,7 +116,46 @@
         </div>
     </section>
 
-    <section class="panel">
+    <div class="section-title">
+        <h2>Messages</h2>
+        <p>Select a friend, open the chat, and send messages without using conversation ids.</p>
+    </div>
+
+    <section class="panel messenger-panel">
+        <aside class="friend-sidebar">
+            <div class="messenger-heading">
+                <div>
+                    <h2>Friends</h2>
+                    <p class="panel-note">Click a friend to chat.</p>
+                </div>
+                <button id="refreshFriendsButton" class="secondary small-button" type="button">Refresh</button>
+            </div>
+            <div id="contactsList" class="contacts-list">
+                <p class="empty-state">Login, then load your friends.</p>
+            </div>
+        </aside>
+
+        <section class="chat-window">
+            <div class="chat-header">
+                <div>
+                    <h2 id="activeChatName">No chat selected</h2>
+                    <p id="activeChatMeta" class="panel-note">Choose a friend from the left.</p>
+                </div>
+                <span class="badge">Private chat</span>
+            </div>
+
+            <div id="messageThread" class="message-thread">
+                <p class="empty-state">Messages will appear here.</p>
+            </div>
+
+            <form id="messengerForm" class="composer">
+                <textarea id="messengerMessage" class="message-input" maxlength="2000" placeholder="Write a message..." required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </section>
+
+    <section class="panel raw-result-panel">
         <div class="panel-header">
             <div>
                 <h2>API Result</h2>

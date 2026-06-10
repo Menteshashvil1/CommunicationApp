@@ -39,3 +39,7 @@ GET http://localhost:8081/api/users/me
 ### with token
 GET http://localhost:8081/api/users/me
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdHVkZW50QGV4YW1wbGUuY29tIiwidXNlcklkIjoxLCJkaXNwbGF5TmFtZSI6IlN0dWRlbnQiLCJpYXQiOjE3ODExMTM1MDgsImV4cCI6MTc4MTExNzEwOH0.7uyiL3iHUNMah3kcPQb0YG5QQzNYI1j2UmKYuBg5LBSkV9MqU-WURVATC63TUzBHcy3CF4YwvouYo7PYTUi3TQ
+
+##
+POST http://localhost:8081/api/conversations/private/3
+Authorization: Bearer YOUR_TOKEN

@@ -2,6 +2,7 @@ package com.example.communications.common.exception;
 
 import com.example.communications.auth.exception.EmailAlreadyRegisteredException;
 import com.example.communications.contact.exception.ContactRequestException;
+import com.example.communications.message.exception.MessageAccessException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -92,6 +93,21 @@ public class GlobalExceptionHandler {
                 Instant.now(),
                 HttpStatus.NOT_FOUND.value(),
                 HttpStatus.NOT_FOUND.getReasonPhrase(),
+                exception.getMessage(),
+                request.getRequestURI(),
+                List.of()
+        );
+    }
+    @ExceptionHandler(MessageAccessException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ApiErrorResponse handleMessageAccessException(
+            MessageAccessException exception,
+            HttpServletRequest request
+    ) {
+        return new ApiErrorResponse(
+                Instant.now(),
+                HttpStatus.FORBIDDEN.value(),
+                HttpStatus.FORBIDDEN.getReasonPhrase(),
                 exception.getMessage(),
                 request.getRequestURI(),
                 List.of()

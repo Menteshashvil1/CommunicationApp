@@ -39,6 +39,25 @@ public interface ContactRequestRepository extends JpaRepository<ContactRequest, 
     );
 
     @Query("""
+            select count(contactRequest) > 0
+            from ContactRequest contactRequest
+            where contactRequest.status = com.example.communications.contact.model.ContactRequestStatus.ACCEPTED
+            and (
+                (
+                    contactRequest.sender.id = :firstUserId
+                    and contactRequest.receiver.id = :secondUserId
+                ) or (
+                    contactRequest.sender.id = :secondUserId
+                    and contactRequest.receiver.id = :firstUserId
+                )
+            )
+            """)
+    boolean areAcceptedContacts(
+            @Param("firstUserId") Long firstUserId,
+            @Param("secondUserId") Long secondUserId
+    );
+
+    @Query("""
             select contactRequest
             from ContactRequest contactRequest
             join fetch contactRequest.sender
