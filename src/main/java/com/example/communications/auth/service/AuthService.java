@@ -3,7 +3,7 @@ package com.example.communications.auth.service;
 import com.example.communications.auth.dto.LoginRequest;
 import com.example.communications.auth.dto.LoginResponse;
 import com.example.communications.auth.dto.RegisterRequest;
-import com.example.communications.auth.dto.UserResponse;
+import com.example.communications.user.dto.UserResponse;
 import com.example.communications.auth.exception.EmailAlreadyRegisteredException;
 import com.example.communications.auth.exception.InvalidCredentialsException;
 import com.example.communications.user.model.User;

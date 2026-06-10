@@ -1,4 +1,4 @@
-package com.example.communications.auth.dto;
+package com.example.communications.user.dto;
 
 import com.example.communications.user.model.User;
 
@@ -9,8 +9,8 @@ public record UserResponse(
         String email,
         String displayName,
         Instant createdAt
-){
-    public static UserResponse from(User user){
+) {
+    public static UserResponse from(User user) {
         return new UserResponse(
                 user.getId(),
                 user.getEmail(),
@@ -18,6 +18,4 @@ public record UserResponse(
                 user.getCreatedAr()
         );
     }
-
 }
-

@@ -4,7 +4,7 @@ package com.example.communications.auth.controller;
 import com.example.communications.auth.dto.LoginRequest;
 import com.example.communications.auth.dto.LoginResponse;
 import com.example.communications.auth.dto.RegisterRequest;
-import com.example.communications.auth.dto.UserResponse;
+import com.example.communications.user.dto.UserResponse;
 import com.example.communications.auth.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
