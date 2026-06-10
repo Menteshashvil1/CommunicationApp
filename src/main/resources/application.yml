@@ -7,10 +7,6 @@ spring:
     username: communications_user
     password: communications_password
 
-  app:
-    jwt:
-      secret: "change-this-secret-to-a-long-random-value-at-least-32-characters"
-      expiration-minutes: 60
   jpa:
     hibernate:
       ddl-auto: update
@@ -22,3 +18,7 @@ spring:
 server:
   port: 8081
 
+app:
+  jwt:
+    secret: "change-this-secret-to-a-long-random-value-at-least-32-characters"
+    expiration-minutes: 60

@@ -15,6 +15,7 @@ Content-Type: application/json
   "password": "StrongPassword123!"
 }
 
+
 ### Login with wrong password
 POST http://localhost:8081/api/auth/login
 Content-Type: application/json
@@ -23,3 +24,22 @@ Content-Type: application/json
   "email": "student@example.com",
   "password": "WrongPassword123!"
 }
+###Lg
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+"email": "student@example.com",
+"password": "StrongPassword123!"
+}
+
+###without token
+GET http://localhost:8081/api/users/me
+
+### with token
+GET http://localhost:8081/api/users/me
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdHVkZW50QGV4YW1wbGUuY29tIiwidXNlcklkIjoxLCJkaXNwbGF5TmFtZSI6IlN0dWRlbnQiLCJpYXQiOjE3ODExMTM1MDgsImV4cCI6MTc4MTExNzEwOH0.7uyiL3iHUNMah3kcPQb0YG5QQzNYI1j2UmKYuBg5LBSkV9MqU-WURVATC63TUzBHcy3CF4YwvouYo7PYTUi3TQ
+
+##
+POST http://localhost:8081/api/conversations/private/3
+Authorization: Bearer YOUR_TOKEN
