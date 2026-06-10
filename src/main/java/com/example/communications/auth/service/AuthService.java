@@ -2,6 +2,7 @@ package com.example.communications.auth.service;
 
 import com.example.communications.auth.dto.RegisterRequest;
 import com.example.communications.auth.dto.UserResponse;
+import com.example.communications.auth.exception.EmailAlreadyRegisteredException;
 import com.example.communications.user.model.User;
 import com.example.communications.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -24,7 +25,7 @@ public class AuthService {
         String email = registerRequest.email().trim().toLowerCase();
 
         if (userRepository.existsByEmail(email)) {
-            throw new IllegalStateException("Email already exists!");
+            throw new EmailAlreadyRegisteredException(email);
         }
 
         String passwordHash = passwordEncoder.encode(registerRequest.password());
