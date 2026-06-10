@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: communications-app
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/communications_app
+    username: communications_user
+    password: communications_password
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8081
