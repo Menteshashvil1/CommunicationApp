@@ -3,7 +3,7 @@ spring:
     name: communications-app
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/communications_app
+    url: jdbc:postgresql://localhost:5433/communications_app
     username: communications_user
     password: communications_password
 

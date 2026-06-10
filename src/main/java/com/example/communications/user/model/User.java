@@ -1,5 +1,4 @@
 package com.example.communications.user.model;
-
 import jakarta.persistence.*;
 
 import java.time.Instant;
