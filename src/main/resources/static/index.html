@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Communications App</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main class="shell">
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">Communications App</p>
+            <h1>Communications App Console</h1>
+            <p class="subtitle">Register, login, and try protected features from one page.</p>
+        </div>
+        <button id="healthButton" type="button">Check API</button>
+    </header>
+
+    <div class="section-title">
+        <h2>Account</h2>
+        <p>Create an account or login. Login fills your session token automatically.</p>
+    </div>
+
+    <section class="grid">
+        <form id="registerForm" class="panel">
+            <div class="panel-header">
+                <h2>Register</h2>
+                <span class="badge">POST /api/auth/register</span>
+            </div>
+            <label>
+                Email
+                <input id="registerEmail" type="email" value="student@example.com" autocomplete="email" required>
+            </label>
+            <label>
+                Password
+                <input id="registerPassword" type="password" value="StrongPassword123!" autocomplete="new-password" required>
+            </label>
+            <label>
+                Display name
+                <input id="registerDisplayName" type="text" value="Student" required>
+            </label>
+            <button type="submit">Create account</button>
+        </form>
+
+        <form id="loginForm" class="panel">
+            <div class="panel-header">
+                <h2>Login</h2>
+                <span class="badge">POST /api/auth/login</span>
+            </div>
+            <label>
+                Email
+                <input id="loginEmail" type="email" value="student@example.com" autocomplete="email" required>
+            </label>
+            <label>
+                Password
+                <input id="loginPassword" type="password" value="StrongPassword123!" autocomplete="current-password" required>
+            </label>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <section class="panel token-panel">
+        <div class="panel-header">
+            <div>
+                <h2>Session</h2>
+                <p class="panel-note">The JWT is saved here after login and used for protected requests.</p>
+            </div>
+            <button id="clearTokenButton" class="secondary" type="button">Clear</button>
+        </div>
+        <textarea id="tokenOutput" spellcheck="false" placeholder="JWT appears here after login."></textarea>
+        <div class="actions">
+            <button id="meButton" type="button">Who am I?</button>
+        </div>
+    </section>
+
+    <div class="section-title">
+        <h2>Contacts</h2>
+        <p>Use two accounts to send and accept friend requests.</p>
+    </div>
+
+    <section class="grid">
+        <form id="sendContactRequestForm" class="panel">
+            <div class="panel-header">
+                <h2>Send Friend Request</h2>
+                <span class="badge">POST /api/contacts/requests</span>
+            </div>
+            <label>
+                Receiver email
+                <input id="receiverEmail" type="email" placeholder="friend@example.com" autocomplete="off" required>
+            </label>
+            <button type="submit">Send Friend Request</button>
+        </form>
+
+        <form id="acceptContactRequestForm" class="panel">
+            <div class="panel-header">
+                <h2>Accept Request</h2>
+                <span class="badge">POST /api/contacts/requests/{id}/accept</span>
+            </div>
+            <label>
+                Request id
+                <input id="requestId" type="number" min="1" placeholder="1" required>
+            </label>
+            <button type="submit">Accept Friend Request</button>
+        </form>
+    </section>
+
+    <section class="panel contacts-panel">
+        <div class="panel-header">
+            <h2>Friend Lists</h2>
+            <span class="badge">JWT required</span>
+        </div>
+        <div class="actions split-actions">
+            <button id="incomingRequestsButton" type="button">Show Requests Sent To Me</button>
+            <button id="contactsButton" type="button">Show My Friends</button>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-header">
+            <div>
+                <h2>API Result</h2>
+                <p class="panel-note">The latest server response appears here.</p>
+            </div>
+            <span id="statusBadge" class="badge muted">Idle</span>
+        </div>
+        <pre id="responseOutput">{}</pre>
+    </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
